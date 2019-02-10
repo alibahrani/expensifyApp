@@ -1,0 +1,9 @@
+create new folder >  public which contain all the assets   and create index.html
+live server installation for barebone react npm -g install live-server
+
+setting up babel locally 
+    . install babel-cli@6.24.1
+    . install react preset and env plugin
+    . npm add babel-preset-react@6.24.1 babel-preset-env@1.5.2
+
+*pakcage.json  outline all the dependces the project run 
