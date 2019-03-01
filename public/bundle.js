@@ -60,14 +60,16 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 17:
 /***/ (function(module, exports) {
 
-console.log('app.js is running!!1');
+throw new Error("Module parse failed: D:\\examples\\newReactApplication\\Indecision-app\\src\\app.js Unexpected token (7:17)\nYou may need an appropriate loader to handle this file type.\n| console.log(validator.isEmail('test@gmail.com'));\r\n| \r\n| const template = <p>test 123 </p>\r\n| ReactDOM.render(template, document.getElementById('app'));");
 
 /***/ })
-/******/ ]);
+
+/******/ });
