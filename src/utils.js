@@ -9,3 +9,5 @@
 //person.js
 //named export isAdult(age) => true if adult otherwise false
 // named export canDrink(18) - true if 21 or over, otherwise false
+
+//import isAdult and canDrink
