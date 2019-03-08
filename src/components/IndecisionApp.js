@@ -5,16 +5,10 @@ import Action from './Action';
 import Options from './Options';
 
 class IndecisionApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            options: props.options
-        };
-        this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        this.handlePick = this.handlePick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-    }
+    state = {
+        options: []
+    };
+    
 //Life cycle methods
     componentDidMount() {
         console.log('Fetching data');
@@ -32,7 +26,7 @@ class IndecisionApp extends React.Component {
 
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate = (prevProps, prevState) => {
         //after state value changes
         if(prevState.options.length !== this.state.options.length){
             const json = JSON.stringify(this.state.options);
@@ -40,7 +34,7 @@ class IndecisionApp extends React.Component {
             console.log('saving data');
         }
         
-    }
+    };
 
     componentWillUnmount() {
         //barly used 
@@ -49,30 +43,30 @@ class IndecisionApp extends React.Component {
 
 
 
-    handleDeleteOptions() {
+    handleDeleteOptions = () => {
         this.setState(() => ({ options: []}));
-    }
-    handlePick() {
+    };
+    handlePick = () => {
         const genratedNumber = Math.floor(Math.random() * this.state.options.length);
         const selectedOption = this.state.options[genratedNumber];
         alert(selectedOption);
 
-    }
+    };
 //Something something
-    handleAddOption(option) {
+    handleAddOption = (option) => {
         if(!option) {
             return 'Enter valid vaule to add item';
         }else if (this.state.options.indexOf(option) > -1) {
             return 'This option already exists';
         }
         this.setState((prevState) => ({ options: prevState.options.concat(option)}));
-    }
+    };
 
-    handleDeleteOption(optionToRemove) {
+    handleDeleteOption = (optionToRemove) => {
        this.setState((prevState) => ({options: prevState.options.filter((option)=> {
            return optionToRemove !== option;
        })}));
-    }
+    };
     
     //handlePick - pass down to Action and bind here and setup onClick
     //Randomly pick an option and alert it 
