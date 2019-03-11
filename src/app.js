@@ -7,32 +7,34 @@ import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp';
 
 
+
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
 
-//Class Plugins 
 
-class OldSyntax {
-    constructor() {
-        this.name ='Ali';
 
-    }
-    getGreeting() {
-        return `Hi. my name is ${this.name}`
-    }
-}
+// //Class Plugins 
 
-const oldSyntax = new OldSyntax();
-console.log(oldSyntax.getGreeting)
+// class OldSyntax {
+//     constructor() {
+//         this.name ='Ali';
 
-//-------
+//     }
+//     getGreeting() {
+//         return `Hi. my name is ${this.name}`
+//     }
+// }
 
-class NewSyntax {
-    name= 'Ali Bahrani';
-    getGreeting = () => {
-        return `Hi. my name is ${this.name}`
+// const oldSyntax = new OldSyntax();
+// console.log(oldSyntax.getGreeting)
 
-    }
-}
 
-const newSyntax = new NewSyntax();
-console.log(newSyntax)
+// class NewSyntax {
+//     name= 'Ali Bahrani';
+//     getGreeting = () => {
+//         return `Hi. my name is ${this.name}`
+
+//     }
+// }
+
+// const newSyntax = new NewSyntax();
+// console.log(newSyntax)

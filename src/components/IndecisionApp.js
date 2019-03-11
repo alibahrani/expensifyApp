@@ -3,10 +3,12 @@ import AddOption from './AddOption';
 import Header from './Header';
 import Action from './Action';
 import Options from './Options';
+import OptionModal from './OptionModal';
 
 class IndecisionApp extends React.Component {
     state = {
-        options: []
+        options: [],
+        selectedOption: undefined
     };
     
 //Life cycle methods
@@ -48,9 +50,13 @@ class IndecisionApp extends React.Component {
     };
     handlePick = () => {
         const genratedNumber = Math.floor(Math.random() * this.state.options.length);
-        const selectedOption = this.state.options[genratedNumber];
-        alert(selectedOption);
+        const option = this.state.options[genratedNumber];
+        this.setState( ()=> ({ selectedOption: option}));
 
+    };
+
+    handleClearButton = () => {
+        this.setState(() => ({selectedOption: undefined}))
     };
 //Something something
     handleAddOption = (option) => {
@@ -82,6 +88,10 @@ class IndecisionApp extends React.Component {
                     handleDeleteOptions={this.handleDeleteOptions}
                     handleDeleteOption = {this.handleDeleteOption}/>
                 <AddOption AddOption={this.handleAddOption}/>
+                <OptionModal  
+                    selectedOption= {this.state.selectedOption} 
+                    clearBtn={this.handleClearButton}
+                    />
             </div>
         );
     }
