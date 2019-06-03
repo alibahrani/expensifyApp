@@ -1,15 +1,33 @@
 import { createStore, combineReducers } from 'redux';
-
+import uuid from 'uuid';
 //add_expense
-const addExpense = () => ({
+const addExpense = (
+    {description = '',
+     note='',
+     amount= 0,
+     createdAt = 0 } = {}) => ({
     type: 'ADD_EXPENSE',
     expense: {
-
+        id: uuid(),
+        description,
+        note,
+        amount, 
+        createdAt
     }
 });
-//remove_expenses
-//edit_expenses
 
+
+//remove_expenses
+const removeExpense = ({id} = {}) => ({
+    type: 'REMOVE_EXPENSE',
+    id
+});
+//edit_expenses
+const editExpese = (id, updates) => ({
+    type:'EDIT_EXPENSE',
+    id,
+    updates
+})
 //settextfilter
 //sort_by_date
 //sortByAmount
@@ -21,6 +39,24 @@ const addExpense = () => ({
 const expesesReducerDefaultState = [];
 const expensesReducer = (state = expesesReducerDefaultState, action) => {
     switch(action.type) {
+        case 'ADD_EXPENSE':
+            return [...state, action.expense];
+        case 'REMOVE_EXPENSE':
+            return state.filter(({id}) =>{
+                return id !==action.id;
+            }
+            );
+        case 'EDIT_EXPENSE':
+            return state.map((expense) => {
+                if(expense.id === action.id ) {
+                    return {
+                        ...expense,
+                        ...action.updates
+                    }
+                }else {
+                    return expense
+                };
+            } );
         default:
             return state;
     }
@@ -49,7 +85,16 @@ const store = createStore(
     })
 );
 
-console.log(store.getState());
+store.subscribe(() => {
+    console.log(store.getState());
+})
+
+
+const expenseOne = store.dispatch(addExpense({description: 'Rent', amount : 100 }));
+const expenseTwo = store.dispatch(addExpense( {description: 'Coffee', amount: 1000}));
+
+store.dispatch(editExpese(expenseTwo.expense.id, {amount : 500 }));
+store.dispatch(removeExpense({id: expenseOne.expense.id }));
 
 const demoState = {
     expenses: [{
@@ -66,3 +111,15 @@ const demoState = {
         endDate: undefined
     }
 }
+
+
+const user= {
+    name:'jen',
+    age: 24
+}
+
+console.log({
+    ...user,
+    location : 'Mississauga',
+    age: 35
+});
