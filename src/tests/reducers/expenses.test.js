@@ -57,9 +57,7 @@ test('Should edit expense', () => {
             description: modifiedDescription
         }
     }
-    console.log(action.expense);
     const state = expensesReducer(expenses,action);
-    console.log(state);
 
     expect(state[2].description).toEqual(modifiedDescription);
 });
@@ -74,9 +72,7 @@ test('Should Not edit expense', () => {
             description: modifiedDescription
         }
     }
-    console.log(action.expense);
     const state = expensesReducer(expenses,action);
-    console.log(state);
 
     expect(state).toEqual(expenses);
 });
